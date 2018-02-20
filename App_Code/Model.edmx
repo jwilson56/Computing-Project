@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookName" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="AuthorName" Type="text" Nullable="false" />
+          <Property Name="Copies" Type="smallint" Nullable="false" />
+          <Property Name="In_Stock" Type="bit" Nullable="false" />
+          <Property Name="Discription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rents">
+          <Key>
+            <PropertyRef Name="Rental_ID" />
+          </Key>
+          <Property Name="Rental_ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookName" Type="int" Nullable="false" />
+          <Property Name="AuthorName" Type="text" Nullable="false" />
+          <Property Name="Copies" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Avialable" Type="bit" Nullable="false" />
+          <Property Name="Discription" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDB">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="User_first_name" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Second_name" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Books_Rented " Type="char" MaxLength="10" />
+          <Property Name="Address" Type="text" Nullable="false" />
+          <Property Name="email" Type="text" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Rents_BookID">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Rents" Type="Self.Rents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="InsertDataIntoUserTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="char" Mode="In" />
+          <Parameter Name="User_first_name" Type="char" Mode="In" />
+          <Parameter Name="Second_name" Type="char" Mode="In" />
+        </Function>
+        <Function Name="RentedMacbeth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TotalBooks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rents" EntityType="Self.Rents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDB" EntityType="Self.UserDB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rents_BookID" Association="Self.FK_Rents_BookID">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AuthorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Copies" Type="Int16" Nullable="false" />
+          <Property Name="In_Stock" Type="Boolean" Nullable="false" />
+          <Property Name="Discription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rents" Relationship="Self.FK_Rents_BookID" FromRole="Book" ToRole="Rents" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="Rental_ID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="Rental_ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Rents_BookID" FromRole="Rents" ToRole="Book" />
+          <NavigationProperty Name="UserDBs" Relationship="DatabaseModel.RentUserDB" FromRole="Rent" ToRole="UserDB" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookName" Type="Int32" Nullable="false" />
+          <Property Name="AuthorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Copies" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Avialable" Type="Boolean" Nullable="false" />
+          <Property Name="Discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDB">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="User_first_name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Second_name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Books_Rented_" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rent" Relationship="DatabaseModel.RentUserDB" FromRole="UserDB" ToRole="Rent" />
+        </EntityType>
+        <Association Name="FK_Rents_BookID">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Rents" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Rents">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Rents" EntityType="Self.Rent" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="UserDBs" EntityType="Self.UserDB" />
+          <AssociationSet Name="FK_Rents_BookID" Association="Self.FK_Rents_BookID">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Rents" EntitySet="Rents" />
+          </AssociationSet>
+          <FunctionImport Name="InsertDataIntoUserTable">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="User_first_name" Mode="In" Type="String" />
+            <Parameter Name="Second_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RentedMacbeth" ReturnType="Collection(String)" />
+          <FunctionImport Name="TotalBooks" ReturnType="Collection(DatabaseModel.TotalBooks_Result)" />
+          <AssociationSet Name="RentUserDB" Association="DatabaseModel.RentUserDB">
+            <End Role="Rent" EntitySet="Rents" />
+            <End Role="UserDB" EntitySet="UserDBs" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="TotalBooks_Result">
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <Association Name="RentUserDB">
+          <End Type="DatabaseModel.Rent" Role="Rent" Multiplicity="1" />
+          <End Type="DatabaseModel.UserDB" Role="UserDB" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="DatabaseModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Copies" ColumnName="Copies" />
+                <ScalarProperty Name="In_Stock" ColumnName="In_Stock" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rents">
+            <EntityTypeMapping TypeName="DatabaseModel.Rent">
+              <MappingFragment StoreEntitySet="Rents">
+                <ScalarProperty Name="Rental_ID" ColumnName="Rental_ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="DatabaseModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Copies" ColumnName="Copies" />
+                <ScalarProperty Name="Avialable" ColumnName="Avialable" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDBs">
+            <EntityTypeMapping TypeName="DatabaseModel.UserDB">
+              <MappingFragment StoreEntitySet="UserDB">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="User_first_name" ColumnName="User_first_name" />
+                <ScalarProperty Name="Second_name" ColumnName="Second_name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Books_Rented_" ColumnName="Books_Rented " />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertDataIntoUserTable" FunctionName="DatabaseModel.Store.InsertDataIntoUserTable" />
+          <FunctionImportMapping FunctionImportName="RentedMacbeth" FunctionName="DatabaseModel.Store.RentedMacbeth" />
+          <FunctionImportMapping FunctionImportName="TotalBooks" FunctionName="DatabaseModel.Store.TotalBooks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DatabaseModel.TotalBooks_Result">
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

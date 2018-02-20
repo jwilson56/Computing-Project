@@ -1,0 +1,10 @@
+﻿<h2>Macbeth</h2>
+<p id="p1">Macbeth,a brave lord of the king of Scotland,Duncan,once while returning from a victorious battle
+along with a companion Banquo happened to meet three witches who made three predictions which became a turning
+point in Macbeth's life. When one of the predictions became true, Macbeth along with his cunning wife killed the
+king cruelly to make the second prediction true. But even after becoming the king Macbeth could not find happiness
+and was always haunted by the third prediction. In order to make false the third prediction he attempted many
+murders. He again met the three witches who made another three predictions this time and everything went according
+ to that and finally Macbeth was killed and Malcolm the son of Banquo became the king of Scotland.
+
+</p>
