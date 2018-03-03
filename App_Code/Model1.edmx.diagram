@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21357efd67c9444e9e42c7a6bddecf66" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel1.Book" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Rent" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.User_Comment" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.UserDB" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel1.FK_User_Commet_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.UserDBBook" />
+        <AssociationConnector Association="DatabaseModel1.UserDBRent" />
+        <AssociationConnector Association="DatabaseModel1.UserDBUser_Comment" />
+        <AssociationConnector Association="DatabaseModel1.BookRent" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

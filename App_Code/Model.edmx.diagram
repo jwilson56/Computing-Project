@@ -7,10 +7,9 @@
       <Diagram DiagramId="e2f5c9b9bccd4f87ae550f9f15b69b3b" Name="Diagram1">
         <EntityTypeShape EntityType="DatabaseModel.Book" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Rent" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Table" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.UserDB" Width="1.5" PointX="5.375" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="DatabaseModel.FK_Rents_BookID" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.RentUserDB" />
+        <AssociationConnector Association="DatabaseModel.RentTable" />
+        <EntityTypeShape EntityType="DatabaseModel.User_Comment" Width="1.5" PointX="3" PointY="5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -54,16 +54,39 @@
                     <small>Visualize Quality</small>
                 </h1>
                 <p>
-                    ...<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Rental_ID" DataSourceID="SqlDataSource1">
+                    &nbsp;</p>
+                <p>
+                    Books c<span>urrently </span>rented out</p>
+                <p>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                        DataKeyNames="UserID" DataSourceID="SqlDataSource1">
                         <Columns>
-                            <asp:BoundField DataField="Rental_ID" HeaderText="Rental_ID" ReadOnly="True" SortExpression="Rental_ID" />
-                            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" />
-                            <asp:BoundField DataField="BookID" HeaderText="BookID" SortExpression="BookID" />
+                            <asp:BoundField DataField="UserID" HeaderText="UserID" ReadOnly="True" 
+                                SortExpression="UserID" />
+                            <asp:BoundField DataField="User_first_name" HeaderText="User_first_name" 
+                                SortExpression="User_first_name" />
+                            <asp:BoundField DataField="Second_name" HeaderText="Second_name" 
+                                SortExpression="Second_name" />
+                            <asp:CheckBoxField DataField="Active" HeaderText="Active" 
+                                SortExpression="Active" />
+                            <asp:BoundField DataField="Books_Rented " HeaderText="Books_Rented " 
+                                SortExpression="Books_Rented " />
+                            <asp:BoundField DataField="Address" HeaderText="Address" 
+                                SortExpression="Address" />
+                            <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                            <asp:BoundField DataField="Password" HeaderText="Password" 
+                                SortExpression="Password" />
                         </Columns>
                     </asp:GridView>
                 </p>
                 <p>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Rents]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        SelectCommand="SELECT * FROM [UserDB] WHERE ([Books_Rented ] = @Books_Rented_)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="True" Name="Books_Rented_" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </p>
                 <p>
                     &nbsp;</p>

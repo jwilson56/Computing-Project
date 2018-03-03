@@ -196,7 +196,7 @@ $(document).ready(function(){
                         </td>
                         <td class="auto-style2">&nbsp;</td>
                         <td>
-                            <asp:Button ID="BtnSignUp" runat="server" Text="Sign Up" />
+                            <asp:Button ID="BtnSignUp" runat="server" Text="Sign Up" style="height: 26px" />
                         </td>
                         <td>
                             <asp:Button ID="BtnCheckOut" runat="server" Text="Check out" Visible="False" />

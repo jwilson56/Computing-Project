@@ -190,7 +190,7 @@ $(document).ready(function(){
       
        <div id="RentMacbeth">                      
                 <button id="ClickMacbeth">Read more</button>
-                    <p id="rentMacbeth">test test</p>
+                    <p id="rentMacbeth">This book is about...</p>
 
         </div> 
                 </td>
@@ -218,8 +218,12 @@ $(document).ready(function(){
                 <td class="auto-style1">
                     <asp:Label ID="lblMessage" runat="server" Text="Please select"></asp:Label>
                 </td>
-                <td class="auto-style2">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style2">
+                    <asp:Button ID="Button2" runat="server" Text="Leave a comment" />
+                </td>
+                <td>&nbsp;
+                    <asp:TextBox ID = "TextBoxComment" runat="server" TextMode="MultiLine" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style3">

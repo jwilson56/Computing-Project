@@ -27,8 +27,8 @@ Partial Public Class DatabaseEntities
 
     Public Property Books() As DbSet(Of Book)
     Public Property Rents() As DbSet(Of Rent)
-    Public Property Tables() As DbSet(Of Table)
     Public Property UserDBs() As DbSet(Of UserDB)
+    Public Property User_Comment() As DbSet(Of User_Comment)
 
     Public Overridable Function InsertDataIntoUserTable(userID As String, user_first_name As String, second_name As String) As Integer
         Dim userIDParameter As ObjectParameter = If(userID IsNot Nothing, New ObjectParameter("UserID", userID), New ObjectParameter("UserID", GetType(String)))

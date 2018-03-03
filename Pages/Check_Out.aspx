@@ -6,6 +6,10 @@
 <!-- Template by Quackit.com -->
 <html lang="en">
 <head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +29,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+  
 
     <style type="text/css">
         .auto-style1 {
@@ -68,7 +74,6 @@ $(document).ready(function(){
     });
 });
 </script>--%>
-
 <%-- <script>
 $(document).ready(function(){
     $("button").click(function(){
@@ -103,6 +108,46 @@ $(document).ready(function(){
 </head>
 
 <body>
+
+
+    <%--<div id="paypal-button"></div>--%>
+
+  <%--<script>
+    paypal.Button.render({
+      env: 'production', // Or 'sandbox',
+
+      commit: true, // Show a 'Pay Now' button
+
+      style: {
+        color: 'gold',
+        size: 'small'
+      },
+
+      payment: function(data, actions) {
+        /* 
+         * Set up the payment here 
+         */
+      },
+
+      onAuthorize: function(data, actions) {
+        /* 
+         * Execute the payment here 
+         */
+      },
+
+      onCancel: function(data, actions) {
+        /* 
+         * Buyer cancelled the payment 
+         */
+      },
+
+      onError: function(err) {
+        /* 
+         * An error occurred during the transaction 
+         */
+      }
+    }, '#paypal-button');
+  </script>--%>
 
     <form id="form1" runat="server">
 
@@ -185,8 +230,29 @@ $(document).ready(function(){
                 <td class="auto-style6">
                     &nbsp;</td>
                 <td class="auto-style7">
+                    Please specify collection date</td>
+                <td class="auto-style8">
+                    <asp:Label ID="lblDateValidate" runat="server" Text="Label"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
                     &nbsp;</td>
-                <td class="auto-style8"></td>
+                <td class="auto-style2">
+                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px" Caption="Select a date" ToolTip="Please select a date">
+                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                        <NextPrevStyle VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#808080" />
+                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                        <SelectorStyle BackColor="#CCCCCC" />
+                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                        <WeekendDayStyle BackColor="#FFFFCC" />
+                    </asp:Calendar>
+                </td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">
@@ -197,26 +263,45 @@ $(document).ready(function(){
             <tr>
                 <td class="auto-style1">
                     &nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">
-                    &nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">Please specifiy coleection time </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">
                     &nbsp;</td>
-                <td class="auto-style4"></td>
-                <td class="auto-style5"></td>
+                <td class="auto-style4">
+                    <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:ListItem>9:00 - 12:00  </asp:ListItem>
+                        <asp:ListItem>12:00 - 15:00</asp:ListItem>
+                        <asp:ListItem>15:00 - 18:00</asp:ListItem>
+                        <asp:ListItem>18:00 - 21:00</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style5">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="*Please enter information" ForeColor="Red" SetFocusOnError="True" Visible="False">Please enter information</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+                </td>
             </tr>
         </table>
 <br>
 <br>
             
     </div>
+
+
+
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="47W4SLEKA5L2A">
+<table>
+<tr><td><input type="hidden" name="on0" value="Book">Book</td></tr><tr><td><select name="os0">
+	<option value="Click and Collect">Click and Collect </option>
+    <option value="null">Null </option>
+</select> </td></tr>
+</table>
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
     <!-- /.container -->
 	
 	<footer>
@@ -267,6 +352,9 @@ $(document).ready(function(){
 	
     </form>
 	
+
+  
+
 </body>
 
 </html>

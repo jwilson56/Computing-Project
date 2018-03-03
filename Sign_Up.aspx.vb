@@ -11,15 +11,86 @@ Partial Class Sign_Up
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
     End Sub
-    'Sub addCustomer()
-    '    Dim sqlCS As String
-    '    Dim firstnamecust As String
-    '    Dim surnamecust As String
-    '    Dim emailcust As String
+    Protected Sub BtnCheckOut_Click(sender As Object, e As EventArgs) Handles BtnCheckOut.Click
 
-    '    firstnamecust = TxtFirstName.Text
-    '    surnamecust = TxtSecondName.Text
-    '    emailcust = TxtEmailUp.Text
+        Dim firstname As String
+        Dim surname As String
+        Dim email As String
+        Dim password As String
+
+        firstname = TxtFirstName.Text
+        surname = TxtSecondName.Text
+        email = TxtEmailUp.Text
+        password = TxtSignPassword.Text
+
+
+        'The values from the textboxes would be stored within the session variables 
+        Session("fname") = firstname
+        Session("sname") = surname
+        Session("emailadd") = email
+
+        Session("pword") = password
+
+
+
+        If firstname <> "" And surname <> "" And email <> "" Then
+            lblerror.Visible = True
+            BtnCheckOut.Visible = True
+            LblCheckOut.Visible = True
+        Else
+            lblerror.Text = "Please enter your information"
+        End If
+
+    End Sub
+
+    Sub AddCustomer()
+        Dim sqlCS As String
+        Dim firstnamecust As String
+        Dim surnamecust As String
+        Dim emailcust As String
+        ' Dim sqlConn As New SqlConnection
+        Dim slqCommandcmd = New SqlCommand
+
+
+
+
+        firstnamecust = TxtFirstName.Text
+        surnamecust = TxtSecondName.Text
+        emailcust = TxtEmailUp.Text
+
+        sqlCS = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
+        'sqlConn = New SqlConnection
+
+        Try
+            Using sqlConn As New SqlConnection(sqlCS)
+
+                Dim sqlCMD As New SqlCommand
+                sqlCMD.Connection = sqlConn
+                sqlCMD.CommandText = "InsertDataIntoCustomerTable"
+                sqlCMD.CommandType = Data.CommandType.StoredProcedure
+
+                sqlCMD.Parameters.AddWithValue("@FirstName", firstnamecust)
+                sqlCMD.Parameters.AddWithValue("@LastName", surnamecust)
+                sqlCMD.Parameters.AddWithValue("@Email", emailcust)
+
+                sqlConn.Open()
+
+                sqlCMD.ExecuteNonQuery()
+
+                sqlConn.Close()
+
+            End Using
+
+            lblerror.Text = "You are now registered! Thank you, " & firstnamecust.ToString
+        Catch
+            lblerror.Text = "Run time error"
+
+        End Try
+
+    End Sub
+
+
+
 
 
     '    sqlCS = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
@@ -108,38 +179,38 @@ Partial Class Sign_Up
 
     'End Function
 
-    'Sub addUser()
+    Sub addUser()
 
-    '    Dim emailcust As String
-    '    Dim password As String
+        Dim emailcust As String
+        Dim password As String
 
-    '    Dim sqlCS As String
+        Dim sqlCS As String
 
-    '    emailcust = TxtEmailUp.Text
-    '    password = TxtSignPassword.Text
+        emailcust = TxtEmailUp.Text
+        password = TxtSignPassword.Text
 
-    '    sqlCS = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
+        sqlCS = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
 
-    '    Try
-    '        Using sqlConn As New SqlConnection(sqlCS)
-    '            Dim sqlCMD As New SqlCommand
-    '            sqlCMD.Connection = sqlConn
-    '            sqlCMD.CommandText = "InsertIntoUsersTable"
-    '            sqlCMD.CommandType = Data.CommandType.StoredProcedure
+        Try
+            Using sqlConn As New SqlConnection(sqlCS)
+                Dim sqlCMD As New SqlCommand
+                sqlCMD.Connection = sqlConn
+                sqlCMD.CommandText = "InsertIntoUsersTable"
+                sqlCMD.CommandType = Data.CommandType.StoredProcedure
 
-    '            sqlCMD.Parameters.AddWithValue("@EmailAddress", emailcust)
-    '            sqlCMD.Parameters.AddWithValue("@uPassword", password)
+                sqlCMD.Parameters.AddWithValue("@email", emailcust)
+                'sqlCMD.Parameters.AddWithValue("@uPassword", password)
 
-    '            sqlCMD.ExecuteNonQuery()
-    '        End Using
+                sqlCMD.ExecuteNonQuery()
+            End Using
 
-    '        lblerror.Text = "An account has now been made for you with the email: " & emailcust.ToString
-    '    Catch
-    '        lblerror.Text = "An error has happened, an account has not been made for you!"
+            lblerror.Text = "An account has now been made for you with the email: " & emailcust.ToString
+        Catch
+            lblerror.Text = "An error has happened, an account has not been made for you!"
 
-    '    End Try
+        End Try
 
-    'End Sub
+    End Sub
     Protected Sub TxtUserName_TextChanged(sender As Object, e As EventArgs) Handles TxtUserName.TextChanged
 
     End Sub
@@ -198,28 +269,14 @@ Partial Class Sign_Up
                 sqlConn.Close()
 
             End Using
-            StatusLabel.Text = "student has been added to database"
+            StatusLabel.Text = "User has been added to database"
         Catch
             StatusLabel.Text = "Run time error"
 
         End Try
 
 
-        ''The values from the textboxes would be stored within the session variables 
-        'Session("fname") = firstname
-        'Session("sname") = surname
-        'Session("emailadd") = email
-        'Session("pword") = password
-
-        ''Error message
-
-        'If firstname <> "" And surname <> "" And email <> "" Then
-        '    lblerror.Visible = True
-        '    BtnCheckOut.Visible = True
-        '    LblCheckOut.Visible = True
-        'Else
-        '    lblerror.Text = "Please enter your information"
-        'End If
+        
 
         'Using (SqlConnection sqlCon = New sqlConnection(@"Data Source=(local)\sqle2015;initial Catalog=LoginDB;interated security=True;"))
 
@@ -235,7 +292,7 @@ Partial Class Sign_Up
     Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstName.TextChanged
 
     End Sub
-    Protected Sub BtnCheckOut_Click(sender As Object, e As EventArgs) Handles BtnCheckOut.Click
+    Protected Sub btnLogIn_Click(sender As Object, e As EventArgs) Handles btnLogIn.Click
 
     End Sub
 End Class
