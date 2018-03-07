@@ -8,14 +8,14 @@ Partial Class Pages_Register
         Dim password As String
         Dim fName As String
         Dim sName As String
-        Dim age As Integer
+        Dim DOB As Integer
         Dim email As String
 
         regNo = txtRegNo.Text
         password = TxtPassword1.Text
         fName = TxtFName.Text
         sName = TxtSName.Text
-        age = TxtAge.Text
+        DOB = TxtAge.Text
         email = TxtEmail.Text
 
         sqlCS = ConfigurationManager.ConnectionStrings("UniConnString").ConnectionString
@@ -28,7 +28,7 @@ Partial Class Pages_Register
                 sqlCmd.Parameters.AddWithValue("@StudNum", regNo)
                 sqlCmd.Parameters.AddWithValue("@FirstName", fName)
                 sqlCmd.Parameters.AddWithValue("@LastName", sName)
-                sqlCmd.Parameters.AddWithValue("@Age", age)
+                sqlCmd.Parameters.AddWithValue("@DOB", DOB)
                 sqlCmd.Parameters.AddWithValue("@Email", email)
 
                 sqlConn.Open()
@@ -42,5 +42,8 @@ Partial Class Pages_Register
         Catch
             LblStatusLabel.Text = "A run-time error has occurred"
         End Try
+    End Sub
+    Protected Sub TxtAge_TextChanged(sender As Object, e As EventArgs) Handles TxtAge.TextChanged
+
     End Sub
 End Class

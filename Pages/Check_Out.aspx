@@ -228,7 +228,17 @@ $(document).ready(function(){
         <table class="nav-justified">
             <tr>
                 <td class="auto-style6">
-                    &nbsp;</td>
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <RoleGroups>
+                            <asp:RoleGroup Roles="Manager">
+                                <contentTemplate>
+                                    <asp:HyperLink ID="HyperLink1" runat="server"
+                                        NavigateUrl="~/ManagerArea/Managers.aspx">Managers Area</asp:HyperLink>
+                                </contentTemplate>
+                            </asp:RoleGroup>
+                        </RoleGroups>
+                    </asp:LoginView>
+                </td>
                 <td class="auto-style7">
                     Please specify collection date</td>
                 <td class="auto-style8">

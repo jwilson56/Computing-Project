@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e2f5c9b9bccd4f87ae550f9f15b69b3b" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseModel.Book" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.Rent" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.UserDB" Width="1.5" PointX="5.375" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="DatabaseModel.RentTable" />
-        <EntityTypeShape EntityType="DatabaseModel.User_Comment" Width="1.5" PointX="3" PointY="5" />
+      <Diagram DiagramId="808112a453b944758758c5bf3626c314" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.Book" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Rent" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User_Comment" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.UserDB" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK_Rents_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_User_Commet_BookID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Rents_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_User_Comment_UserID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
