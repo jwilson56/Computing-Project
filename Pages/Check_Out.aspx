@@ -73,8 +73,7 @@ $(document).ready(function(){
         $("p").toggle();
     });
 });
-</script>--%>
-<%-- <script>
+</script>--%><%-- <script>
 $(document).ready(function(){
     $("button").click(function(){
         $("#div1").load("TextFile.txt", function(responseTxt, statusTxt, xhr){
@@ -111,7 +110,6 @@ $(document).ready(function(){
 
 
     <%--<div id="paypal-button"></div>--%>
-
   <%--<script>
     paypal.Button.render({
       env: 'production', // Or 'sandbox',
@@ -266,13 +264,14 @@ $(document).ready(function(){
             </tr>
             <tr>
                 <td class="auto-style1">
-                    &nbsp;</td>
+                    Overall total:</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
-                    &nbsp;</td>
+                    <asp:Label ID="lblitemsubtotal" runat="server"></asp:Label>
+                </td>
                 <td class="auto-style2">Please specifiy coleection time </td>
                 <td>&nbsp;</td>
             </tr>
@@ -294,6 +293,7 @@ $(document).ready(function(){
             </tr>
         </table>
 <br>
+        <asp:Label ID="lblPrice" runat="server"></asp:Label>
 <br>
             
     </div>

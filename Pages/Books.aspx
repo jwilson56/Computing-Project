@@ -65,8 +65,7 @@ $(document).ready(function(){
         $("p").toggle();
     });
 });
-</script>--%>
-<%-- <script>
+</script>--%><%-- <script>
 $(document).ready(function(){
     $("button").click(function(){
         $("#div1").load("TextFile.txt", function(responseTxt, statusTxt, xhr){
@@ -182,8 +181,7 @@ $(document).ready(function(){
                 </td>
                 <td class="auto-style7">
                     <%-- <asp:Button ID="btnRead_more" runat="server" Text="Read more" />
-                    <p>This is a paragraph.</p>--%>
-                   <%-- <div id="div1"><h2>Info and parents guide</h2></div>
+                    <p>This is a paragraph.</p>--%>                   <%-- <div id="div1"><h2>Info and parents guide</h2></div>
 
                         <button>Read more</button>
                         <button id="readless">Read less</button>--%>
@@ -195,9 +193,7 @@ $(document).ready(function(){
         </div> 
                 </td>
                 <td class="auto-style8">
-                    <asp:RadioButton ID="RadioButton1" runat="server" />
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
@@ -210,7 +206,8 @@ $(document).ready(function(){
             </tr>
             <tr>
                 <td class="auto-style1">
-                    &nbsp;</td>
+                    <asp:RadioButton ID="RadioButton1" runat="server" />
+                </td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -219,15 +216,14 @@ $(document).ready(function(){
                     <asp:Label ID="lblMessage" runat="server" Text="Please select"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:Button ID="Button2" runat="server" Text="Leave a comment" />
-                </td>
+                    &nbsp;</td>
                 <td>&nbsp;
-                    <asp:TextBox ID = "TextBoxComment" runat="server" TextMode="MultiLine" />
-                </td>
+                    </td>
             </tr>
             <tr>
                 <td class="auto-style3">
                     <asp:Button ID="BtnCheck_out" runat="server" Text="Check out" Visible="False" />
+                    <asp:Label ID="lbl2" runat="server" Text="What would you likre to do?" Visible="False"></asp:Label>
                 </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>

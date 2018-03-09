@@ -5,6 +5,54 @@ Partial Class Pages_Check_Out
     '    Protected Sub Calendar1_SelectionChanged(sender As Object, e As EventArgs) Handles Calendar1.SelectionChanged
 
     '    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load)
+        Dim bookprice As String
+        Dim bookname As String
+        Dim bookID As Integer
+        Dim booksubtotal As Double
+
+        Dim itemName As String
+        Dim itemPrice As String
+        Dim total As Double
+
+        bookID = Session("BookID")
+        bookprice = Session("bookprice")
+
+
+
+        bookname = Session("bookname")
+        bookprice = Session("bookprice")
+        booksubtotal = Session("booksubtotal")
+
+        itemName = bookname
+        itemPrice = bookprice
+        total = booksubtotal
+
+        If itemName <> "" Then
+            lblPrice.Text = itemName.ToString
+        Else
+            itemName = ""
+        End If
+
+
+        If itemPrice <> "" Then
+            lblPrice.Text = itemPrice.ToString
+        Else
+            itemPrice = ""
+
+        End If
+
+        If total <> 0 Then
+            lblitemsubtotal.text = total.ToString("C")
+
+        Else
+            total = 0
+        End If
+
+
+    End Sub
+
     '    Public Sub CheckDate()
 
     '        Dim conn As SqlConnection

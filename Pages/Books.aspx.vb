@@ -2,91 +2,91 @@
 Partial Class Pages_Books
     Inherits System.Web.UI.Page
 
-    '    Const Macbeth As Single = 1
+    Const Macbeth As Single = 0.5
 
 
-    '    Dim Booksubtotal As Integer
-    '    Dim Bookquantity As Integer
-    '    Dim bookName As String
-    '    Dim bookSum As String
-    '    Dim totalMacbeth As Single
-    '    'Dim qvaux As Integer
+    Dim Booksubtotal As Integer
+    Dim Bookquantity As Integer
+    Dim bookName As String
+    Dim bookSum As String
+    Dim totalMacbeth As Single
+    Dim qvaux As Integer
 
-    '    Dim qMacbeth As Integer
-    '    Dim sumMacbeth As Single
-    '    Dim priceMacbeth As String
+    Dim qMacbeth As Integer
+    Dim sumMacbeth As Single
+    Dim priceMacbeth As String
 
-    '    Dim QuantityMacbeth As Integer
-    '    'Public Property DropDownListMacbeth As Object
+    Dim QuantityMacbeth As Integer
+    'Public Property DropDownListMacbeth As Object
 
-    '    Public Function addPriceBook() As String
-    '        Dim totalMacbeth As Single
+    Public Function addPriceBook() As String
+        Dim totalMacbeth As Single
 
-    '        Dim priceMacbeth As String
+        Dim priceMacbeth As String
 
-    '        Dim bookShoppingPrice As String = 0
+        Dim bookShoppingPrice As String = 0
 
-    '        totalMacbeth = Session("sumMacbeth")
+        totalMacbeth = Session("sumMacbeth")
 
-    '        If totalMacbeth > 0 Then
-    '            Booksubtotal += totalMacbeth
-    '            priceMacbeth = CStr(totalMacbeth.ToString("c") & "<br>")
-    '            bookShoppingPrice &= priceMacbeth
-    '        End If
+        If totalMacbeth > 0 Then
+            Booksubtotal += totalMacbeth
+            priceMacbeth = CStr(totalMacbeth.ToString("c") & "<br>")
+            bookShoppingPrice &= priceMacbeth
+        End If
 
-    '        'If Btn_Rent1.Click Then totalMacbeth += 1 And
-    '        '    bookShoppingPrice &= priceMacbeth 
-
-
-
-    '        Session("booksubtotal") = Booksubtotal
-    '        Session("shoppingbook") = bookShoppingPrice
-    '        Return True
-    '    End Function
-    '    Sub addBookID()
-
-
-    '        Dim bookMacbethID As Integer
-
-    '        'If DropDownListMacbeth.Text <> "" Then
-    '        '    bookMacbethID = Session("BookID1")
-    '        '    Session("ID") = bookMacbethID
-
-    '        If RadioButton1.Checked Then
-    '            bookMacbethID = Session("BookID1")
-    '            Session("ID") = bookMacbethID
-    '        Else
-    '            bookMacbethID = 0
-    '        End If
+        'If Btn_Rent1.Click Then totalMacbeth += 1 And
+        '    bookShoppingPrice &= priceMacbeth 
 
 
 
-    '    End Sub
+        Session("booksubtotal") = Booksubtotal
+            Session("shoppingbook") = bookShoppingPrice
+            Return True
+    End Function
+    Sub addBookID()
 
-    '    Public Function addNameBook() As String
-    '        ''Dim Macbeth As Single
 
-    '        'If txtMacbeth.Text <> "" Then
-    '        '    Macbeth = Session("MacbethName")
-    '        '    bookName = Macbeth.ToString()
-    '        'Else
-    '        '    Macbeth = 0
-    '        'End If
+        Dim bookMacbethID As Integer
 
-    '        'Session("bookName") = bookName
-    '        'Return True
-    '        Dim strMacbeth As String
+        '        'If DropDownListMacbeth.Text <> "" Then
+        '        '    bookMacbethID = Session("BookID1")
+        '        '    Session("ID") = bookMacbethID
 
-    '        If RadioButton1.Checked = True Then
-    '            strMacbeth = Session("macbethname")
-    '            bookName = strMacbeth.ToString
-    '        Else
-    '            strMacbeth = 0
-    '        End If
+        If RadioButton1.Checked Then
+            bookMacbethID = Session("BookID1")
+            Session("ID") = bookMacbethID
+        Else
+            bookMacbethID = 0
+        End If
 
-    '        Session("bookname") = bookName
-    '        Return True
-    '    End Function
+
+
+    End Sub
+
+    Public Function addNameBook() As String
+        '        ''Dim Macbeth As Single
+
+        '        'If txtMacbeth.Text <> "" Then
+        '        '    Macbeth = Session("MacbethName")
+        '        '    bookName = Macbeth.ToString()
+        '        'Else
+        '        '    Macbeth = 0
+        '        'End If
+
+        '        'Session("bookName") = bookName
+        '        'Return True
+        Dim strMacbeth As String
+
+        If RadioButton1.Checked = True Then
+            strMacbeth = Session("macbethname")
+            bookName = strMacbeth.ToString
+        Else
+            strMacbeth = 0
+        End If
+
+        Session("bookname") = bookName
+        Return True
+    End Function
     '    Public Function addQBook() As Integer
     '        Dim quantityMacbeth As Integer
 
@@ -160,4 +160,29 @@ Partial Class Pages_Books
     '    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
     '    End Sub
+    Protected Sub BtnCheck_out_Click(sender As Object, e As EventArgs) Handles BtnCheck_out.Click
+        Response.Redirect("Check_Out.aspx")
+    End Sub
+
+    Protected Sub Btn_Macbeth_Click(sender As Object, e As EventArgs) Handles Btn_Macbeth.Click
+        Dim SumMacbeth As Single
+        Dim qMacbeth As Single
+
+        Session("qMacbeth") = qMacbeth
+        If RadioButton1.Checked = True Then
+            SumMacbeth = Macbeth
+            Session("sumMacbeth") = SumMacbeth
+            Session("MacbethName") = "Macbeth" & "<br>"
+            addBookID()
+            addNameBook()
+            addPriceBook()
+
+            BtnCheck_out.Visible = True
+            lblMessage.Visible = True
+
+        Else
+            lblalert.Text = "An error has taken place, please refreash"
+        End If
+    End Sub
+
 End Class
