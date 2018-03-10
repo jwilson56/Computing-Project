@@ -61,6 +61,61 @@
         .auto-style8 {
             height: 262px;
         }
+        .auto-style9 {
+            width: 271px;
+            height: 51px;
+        }
+        .auto-style10 {
+            width: 235px;
+            height: 51px;
+        }
+        .auto-style11 {
+            height: 51px;
+        }
+        .auto-style12 {
+            width: 271px;
+            height: 49px;
+        }
+        .auto-style13 {
+            width: 235px;
+            height: 49px;
+        }
+        .auto-style14 {
+            height: 49px;
+        }
+        .auto-style15 {
+            width: 271px;
+            height: 32px;
+        }
+        .auto-style16 {
+            width: 235px;
+            height: 32px;
+        }
+        .auto-style17 {
+            height: 32px;
+        }
+        .auto-style18 {
+            width: 271px;
+            height: 37px;
+        }
+        .auto-style19 {
+            width: 235px;
+            height: 37px;
+        }
+        .auto-style20 {
+            height: 37px;
+        }
+        .auto-style21 {
+            width: 271px;
+            height: 34px;
+        }
+        .auto-style22 {
+            width: 235px;
+            height: 34px;
+        }
+        .auto-style23 {
+            height: 34px;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -109,8 +164,7 @@ $(document).ready(function(){
 <body>
 
 
-    <%--<div id="paypal-button"></div>--%>
-  <%--<script>
+    <%--<div id="paypal-button"></div>--%>  <%--<script>
     paypal.Button.render({
       env: 'production', // Or 'sandbox',
 
@@ -279,6 +333,49 @@ $(document).ready(function(){
                 <td class="auto-style3">
                     &nbsp;</td>
                 <td class="auto-style4">
+                    &nbsp;</td>
+                <td class="auto-style5">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="*Please enter information" ForeColor="Red" SetFocusOnError="True" Visible="False">Please enter information</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style9">
+                    </td>
+                <td class="auto-style10">
+                    <asp:Label ID="lblemail" runat="server" Text="Email"></asp:Label>
+                </td>
+                <td class="auto-style11">
+                    <asp:TextBox ID="TxtEmail" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style12">
+                    </td>
+                <td class="auto-style13">
+                    <asp:Label ID="lblFName" runat="server" Text="FirstName"></asp:Label>
+                </td>
+                <td class="auto-style14">
+                    <asp:TextBox ID="TxtFirstName" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style15">
+                    </td>
+                <td class="auto-style16">
+                    <asp:Label ID="LblSecondN" runat="server" Text="Second Name"></asp:Label>
+                </td>
+                <td class="auto-style17">
+                    <asp:TextBox ID="TxtSecond" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style18">
+                    </td>
+                <td class="auto-style19">
+                    <asp:Label ID="LblCollect" runat="server" Text="Pick a Collection time "></asp:Label>
+                </td>
+                <td class="auto-style20">
                     <asp:DropDownList ID="DropDownList1" runat="server">
                         <asp:ListItem>9:00 - 12:00  </asp:ListItem>
                         <asp:ListItem>12:00 - 15:00</asp:ListItem>
@@ -286,10 +383,33 @@ $(document).ready(function(){
                         <asp:ListItem>18:00 - 21:00</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style5">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="*Please enter information" ForeColor="Red" SetFocusOnError="True" Visible="False">Please enter information</asp:RequiredFieldValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+            </tr>
+            <tr>
+                <td class="auto-style21">
+                    </td>
+                <td class="auto-style22">
+                    <asp:Label ID="LblReturnDate" runat="server" Text="Return date"></asp:Label>
                 </td>
+                <td class="auto-style23">
+                    <asp:TextBox ID="TxtReturnDate" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;</td>
+                <td class="auto-style4">
+                    <asp:Label ID="LblOutput" runat="server"></asp:Label>
+                </td>
+                <td class="auto-style5">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;</td>
+                <td class="auto-style4">
+                    &nbsp;</td>
+                <td class="auto-style5">
+                    &nbsp;</td>
             </tr>
         </table>
 <br>

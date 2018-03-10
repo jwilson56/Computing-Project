@@ -52,6 +52,22 @@ Partial Class Pages_Check_Out
 
 
     End Sub
+    Private Function ReturnDate(day As DayOfWeek) As DateTime
+        Dim now As DateTime = DateTime.Today
+        Dim today As Integer = CInt(now.DayOfWeek)
+        Dim find As Integer = CInt(day)
+
+        Dim test As Integer = find - today
+        If test > 0 Then
+            Return now.AddDays(test)
+        Else
+            Return now.AddDays(7 - test)
+
+        End If
+
+
+
+    End Function
 
     '    Public Sub CheckDate()
 
@@ -136,4 +152,64 @@ Partial Class Pages_Check_Out
     '        BookCollection()
 
     '    End Sub
+
+    Sub addBooking()
+        Dim fName As String
+        Dim lName As String
+        Dim email As String
+        Dim UpDate As String
+        Dim ReturnBy As String
+
+        Dim sqlCS As String
+
+
+
+        fName = TxtFirstName.Text
+        lName = TxtSecond.Text
+        email = TxtEmail.Text
+        UpDate = TxtReturnDate.Text
+        ReturnBy = TxtReturnDate.Text
+
+        sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
+
+        Try
+            Using sqlConn As New SqlConnectionn(sqlCS)
+
+                Dim sqlCmd As New SqlCommand
+                sqlCmd.Parameters.AddWithValue("@Email", email)
+                sqlCmd.Parameters.AddWithValue("@FirstName", fName)
+                sqlCmd.Parameters.AddWithValue("@LastName", lName)
+                sqlCmd.Parameters.AddWithValue("@PickUpDate", UpDate)
+                sqlCmd.Parameters.AddWithValue("@ReturnDate", ReturnBy)
+
+
+                sqlConn.Open()
+
+                sqlCmd.ExecuteNonQuery()
+
+                sqlConn.Close()
+
+            End Using
+
+            LblOutput.Text = "Hold has been placed"
+
+        Catch
+
+            LblOutput.Text = "An error  has occured"
+        End Try
+
+
+        'Catch ex As Exception
+        'Lbloutput.Text = ex.message
+        'End Try
+
+
+
+
+
+    End Sub
+
+    Protected Sub Calendar1_SelectionChanged(sender As Object, e As EventArgs) Handles Calendar1.SelectionChanged
+
+    End Sub
 End Class
