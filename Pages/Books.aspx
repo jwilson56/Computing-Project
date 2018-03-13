@@ -181,7 +181,7 @@ $(document).ready(function(){
                 </td>
                 <td class="auto-style7">
                     <%-- <asp:Button ID="btnRead_more" runat="server" Text="Read more" />
-                    <p>This is a paragraph.</p>--%>                   <%-- <div id="div1"><h2>Info and parents guide</h2></div>
+                    <p>This is a paragraph.</p>--%><%-- <div id="div1"><h2>Info and parents guide</h2></div>
 
                         <button>Read more</button>
                         <button id="readless">Read less</button>--%>
@@ -202,7 +202,9 @@ $(document).ready(function(){
                 <td class="auto-style2">
                     <asp:Label ID="lblalert" runat="server" Text="Label" Visible="False"></asp:Label>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="btn_test" runat="server" Text="Button" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">

@@ -197,7 +197,8 @@ $(document).ready(function(){
                         <td>
                             &nbsp;</td>
                         <td>
-                            &nbsp;</td>
+                            <asp:TextBox ID="TxtUser" runat="server"></asp:TextBox>
+                        </td>
                     </tr>
                     <tr>
                         <td class="auto-style1">

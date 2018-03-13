@@ -12,7 +12,7 @@
     <title>Click and Collect Library</title>
 
     <!-- may need to be removed, was part of the page OG -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

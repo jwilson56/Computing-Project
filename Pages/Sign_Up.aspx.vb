@@ -289,59 +289,60 @@ Partial Class Sign_Up
 
         'End Using
 
-        Dim sqlCS As String
-        Dim FirstNameCust As String
-        Dim surnamecust As String
-        Dim password As String
-        Dim emailcust As String
-        Dim username As String
-        Dim address As String
-        ' Dim sqlConn As New SqlConnection
-        Dim slqCommandcmd = New SqlCommand
+        '    Dim sqlCS As String
+        '    Dim FirstNameCust As String
+        '    Dim surnamecust As String
+        '    Dim password As String
+        '    Dim emailID As String
+        '    Dim userID As String
+        '    Dim address As String
+        '    ' Dim sqlConn As New SqlConnection
+        '    'Dim slqCommandcmd = New SqlCommand
 
 
 
 
-        FirstNameCust = TxtFirstName.Text
-        surnamecust = TxtSecondName.Text
-        password = TxtPassword.Text
-        emailcust = TxtEmailUp.Text
-        username = TxtEmailUp.Text
-        address = TxtAddress.Text
-        sqlCS = ConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
-        'sqlConn = New SqlConnection
+        '    FirstNameCust = TxtFirstName.Text
+        '    surnamecust = TxtSecondName.Text
+        '    password = TxtPassword.Text
+        '    emailID = TxtEmailUp.Text
+        '    userID = TxtUser.Text
+        '    address = TxtAddress.Text
+        '    sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
+        '    'sqlConn = New SqlConnection
 
-        Try
-            Using sqlConn As New SqlConnection(sqlCS)
+        '    Try
+        '        Using sqlConn As New SqlConnection(sqlCS)
 
-                Dim sqlCMD As New SqlCommand
-                sqlCMD.Connection = sqlConn
-                sqlCMD.CommandText = "InsertDataIntoCustomerTable"
-                sqlCMD.CommandType = Data.CommandType.StoredProcedure
+        '            Dim sqlCMD As New SqlCommand
+        '            sqlCMD.Connection = sqlConn
+        '            sqlCMD.CommandText = "InsertDataIntoUserDB"
+        '            sqlCMD.CommandType = Data.CommandType.StoredProcedure
 
-                sqlCMD.Parameters.AddWithValue("@UserID", emailcust)
-                sqlCMD.Parameters.AddWithValue("@FirstName", FirstNameCust)
-                sqlCMD.Parameters.AddWithValue("@LastName", surnamecust)
-                sqlCMD.Parameters.AddWithValue("@Email", emailcust)
-                sqlCMD.Parameters.AddWithValue("@Address", address)
+        '            sqlCMD.Parameters.AddWithValue("@UserID", userID)
+        '            sqlCMD.Parameters.AddWithValue("@FirstName", FirstNameCust)
+        '            sqlCMD.Parameters.AddWithValue("@LastName", surnamecust)
+        '            sqlCMD.Parameters.AddWithValue("@EmailID", emailID)
+        '            sqlCMD.Parameters.AddWithValue("@Address", address)
 
-                sqlConn.Open()
+        '            sqlConn.Open()
 
-                sqlCMD.ExecuteNonQuery()
-
-                sqlConn.Close()
-                'Membership.CreateUser(emailcust, Password)
-                'Roles.AddUsersToRole(username, "User")
+        '            sqlCMD.ExecuteNonQuery()
 
 
+        '            sqlConn.Close()
+        '            Membership.CreateUser(userID, password)
+        '            Roles.AddUsersToRole(userID, "User")
+        '            Response.Redirect("Homepage.aspx")
 
-            End Using
 
-            lblerror.Text = "You are now registered! Thank you, " & firstnamecust.ToString
-        Catch ex As Exception
-            lblerror.Text = "Run time error"
+        '        End Using
 
-        End Try
+        '        lblerror.Text = "You are now registered! Thank you, " & FirstNameCust.ToString
+        '    Catch ex As Exception
+        '        lblerror.Text = "Run time error"
+
+        '    End Try
 
     End Sub
     Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstName.TextChanged
@@ -351,6 +352,60 @@ Partial Class Sign_Up
 
     End Sub
     Protected Sub CreateUserWizard1_CreatedUser(sender As Object, e As EventArgs) Handles CreateUserWizard1.CreatedUser
+        Dim sqlCS As String
+        Dim FirstNameCust As String
+        Dim surnamecust As String
+        Dim password As String
+        Dim emailID As String
+        Dim userID As String
+        Dim address As String
+        ' Dim sqlConn As New SqlConnection
+        'Dim slqCommandcmd = New SqlCommand
+
+
+
+
+        FirstNameCust = TxtFirstName.Text
+        surnamecust = TxtSecondName.Text
+        password = TxtPassword.Text
+        emailID = TxtEmailUp.Text
+        userID = TxtUser.Text
+        address = TxtAddress.Text
+        sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
+        'sqlConn = New SqlConnection
+
+        Try
+            Using sqlConn As New SqlConnection(sqlCS)
+
+                Dim sqlCMD As New SqlCommand
+                sqlCMD.Connection = sqlConn
+                sqlCMD.CommandText = "InsertDataIntoUserDB"
+                sqlCMD.CommandType = Data.CommandType.StoredProcedure
+
+                sqlCMD.Parameters.AddWithValue("@UserID", userID)
+                sqlCMD.Parameters.AddWithValue("@FirstName", FirstNameCust)
+                sqlCMD.Parameters.AddWithValue("@SecondName", surnamecust)
+                sqlCMD.Parameters.AddWithValue("@EmailID", emailID)
+                sqlCMD.Parameters.AddWithValue("@Address", address)
+
+                sqlConn.Open()
+
+                sqlCMD.ExecuteNonQuery()
+
+
+                sqlConn.Close()
+                Membership.CreateUser(userID, password)
+                Roles.AddUserToRole(userID, "User")
+                Response.Redirect("Homepage.aspx")
+
+
+            End Using
+
+            lblerror.Text = "You are now registered! Thank you, " & FirstNameCust.ToString
+        Catch ex As Exception
+            lblerror.Text = "Run time error"
+
+        End Try
 
     End Sub
 End Class

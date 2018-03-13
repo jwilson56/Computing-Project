@@ -294,7 +294,8 @@ $(document).ready(function(){
                 <td class="auto-style7">
                     Please specify collection date</td>
                 <td class="auto-style8">
-                    <asp:Label ID="lblDateValidate" runat="server" Text="Label"></asp:Label>
+                    
+
                 </td>
             </tr>
             <tr>

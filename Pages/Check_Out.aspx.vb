@@ -6,7 +6,7 @@ Partial Class Pages_Check_Out
 
     '    End Sub
 
-    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load)
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load 'needs looked at
         Dim bookprice As String
         Dim bookname As String
         Dim bookID As Integer
@@ -44,7 +44,7 @@ Partial Class Pages_Check_Out
         End If
 
         If total <> 0 Then
-            lblitemsubtotal.text = total.ToString("C")
+            lblitemsubtotal.Text = total.ToString("C")
 
         Else
             total = 0
@@ -173,9 +173,9 @@ Partial Class Pages_Check_Out
         sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
 
         Try
-            Using sqlConn As New SqlConnectionn(sqlCS)
+            Using sqlConn As New Data.SqlClient.SqlConnection(sqlCS) 'may need to change back
 
-                Dim sqlCmd As New SqlCommand
+                Dim sqlCmd As New Data.SqlClient.SqlCommand
                 sqlCmd.Parameters.AddWithValue("@Email", email)
                 sqlCmd.Parameters.AddWithValue("@FirstName", fName)
                 sqlCmd.Parameters.AddWithValue("@LastName", lName)
