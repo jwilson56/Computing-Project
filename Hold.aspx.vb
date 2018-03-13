@@ -26,36 +26,36 @@ Partial Class Hold
     End Sub
     Sub testInsert()
 
-        Dim myCONN As SqlConnection = New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
-        Dim sSql As String = "INSERT INTO RENTS (FName, LName, Email, Book,) VALUES (@FName, @LName)"
+        'Dim myCONN As SqlConnection = New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+        'Dim sSql As String = "INSERT INTO RENTS (FName, LName, Email, Book,) VALUES (@FName, @LName)"
 
-        Dim insertCmd As New SqlCommand(sSql, myCONN)
-        insertCmd.Parameters.Add("@FName", SqlDbType.NVarChar, 50)
-        insertCmd.Parameters.Add("@LName", SqlDbType.NVarChar, 50)
+        'Dim insertCmd As New SqlCommand(sSql, myCONN)
+        'insertCmd.Parameters.Add("@FName", SqlDbType.NVarChar, 50)
+        'insertCmd.Parameters.Add("@LName", SqlDbType.NVarChar, 50)
 
-        insertCmd.Parameters("@FName").Value = txtFistName.Text
-        insertCmd.Parameters("@LName").Value = TxtLastName.Text
+        'insertCmd.Parameters("@FName").Value = TxtFirstName.Text
+        'insertCmd.Parameters("@LName").Value = TxtSecond.Text
 
-        Dim bSuccess As Boolean
-        bSuccess = True
+        'Dim bSuccess As Boolean
+        'bSuccess = True
 
-        Try
-            myCONN.Open()
-            insertCmd.ExecuteScalar()
-            myCONN.Close()
+        'Try
+        '    myCONN.Open()
+        '    insertCmd.ExecuteScalar()
+        '    myCONN.Close()
 
-        Catch ex As Exception
-            bSuccess = False
-            Lbloutput.Text = "Failed"
-        Finally
-            If myCONN.State = ConnectionState.Open Then
-                myCONN.Close()
-            End If
-        End Try
+        'Catch ex As Exception
+        '    bSuccess = False
+        '    Lbloutput.Text = "Failed"
+        'Finally
+        '    If myCONN.State = ConnectionState.Open Then
+        '        myCONN.Close()
+        '    End If
+        'End Try
 
-        If bSuccess = True Then
-            Lbloutput.Text = "Success"
-        End If
+        'If bSuccess = True Then
+        '    Lbloutput.Text = "Success"
+        'End If
 
 
     End Sub
@@ -66,6 +66,9 @@ Partial Class Hold
 
     End Sub
     Protected Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TxtSecond.TextChanged
+
+    End Sub
+    Protected Sub TxtFirstName_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstName.TextChanged
 
     End Sub
 End Class

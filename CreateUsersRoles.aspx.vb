@@ -2,7 +2,7 @@
 Partial Class CreateUsersRoles
     Inherits System.Web.UI.Page
 
-    Protected Sub btnRun_Click(sender As Object, e As EventArgs) Handles BtnRun.click
+    Protected Sub btnRun_Click(sender As Object, e As EventArgs) Handles BtnRun.Click
 
         Try
             'Roles.CreateRole("Manager")

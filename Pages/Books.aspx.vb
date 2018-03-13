@@ -52,9 +52,9 @@ Partial Class Pages_Books
         '        '    bookMacbethID = Session("BookID1")
         '        '    Session("ID") = bookMacbethID
 
-        If RadioButton1.Checked Then
+        If RadioButton1.Checked = True Then
             bookMacbethID = Session("BookID1")
-            Session("ID") = bookMacbethID
+            Session("BooksID") = 1
         Else
             bookMacbethID = 0
         End If
@@ -76,6 +76,13 @@ Partial Class Pages_Books
         '        'Session("bookName") = bookName
         '        'Return True
         Dim strMacbeth As String
+
+        'If Radio1.Checked = True Then
+        '    strMacbeth = Session("macbethname")
+        '    bookName = strMacbeth.ToString
+        'Else
+        '    strMacbeth = 0
+        'End If
 
         If RadioButton1.Checked = True Then
             strMacbeth = Session("macbethname")
@@ -168,6 +175,15 @@ Partial Class Pages_Books
         Dim SumMacbeth As Single
         Dim qMacbeth As Single
 
+        'Session("qMacbeth") = qMacbeth
+        'If RadioButton1.Checked = True Then
+        '    SumMacbeth = Macbeth
+        '    Session("sumMacbeth") = SumMacbeth
+        '    Session("MacbethName") = "Macbeth" & "<br>"
+        '    addBookID()
+        '    addNameBook()
+        '    addPriceBook()
+
         Session("qMacbeth") = qMacbeth
         If RadioButton1.Checked = True Then
             SumMacbeth = Macbeth
@@ -177,12 +193,19 @@ Partial Class Pages_Books
             addNameBook()
             addPriceBook()
 
+
+
             BtnCheck_out.Visible = True
             lblMessage.Visible = True
 
+
         Else
-            lblalert.Text = "An error has taken place, please refreash"
+            lblalert.Text = "A run time error has taken place"
+
         End If
     End Sub
 
+    Protected Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
+
+    End Sub
 End Class
