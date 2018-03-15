@@ -83,7 +83,7 @@ Partial Class Pages_Books
         'Else
         '    strMacbeth = 0
         'End If
-
+        'Dim radioButton1 As Boolean
         If RadioButton1.Checked = True Then
             strMacbeth = Session("macbethname")
             bookName = strMacbeth.ToString
@@ -206,6 +206,9 @@ Partial Class Pages_Books
     End Sub
 
     Protected Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
+
+    End Sub
+    Protected Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
 
     End Sub
 End Class

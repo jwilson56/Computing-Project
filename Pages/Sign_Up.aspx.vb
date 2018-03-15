@@ -371,7 +371,7 @@ Partial Class Sign_Up
         emailID = TxtEmailUp.Text
         userID = TxtUser.Text
         address = TxtAddress.Text
-        sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
+        sqlCS = ConfigurationManager.ConnectionStrings("UniConnString").ConnectionString
         'sqlConn = New SqlConnection
 
         Try
