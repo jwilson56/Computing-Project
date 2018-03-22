@@ -71,4 +71,15 @@ Partial Class Hold
     Protected Sub TxtFirstName_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstName.TextChanged
 
     End Sub
+
+    Private Sub Hold_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim today As System.DateTime
+        Dim returnBook As System.DateTime
+
+        today = System.DateTime.Now
+        returnBook = today.AddDays(14)
+
+        LblTestReturn.Text = returnBook.ToString
+
+    End Sub
 End Class

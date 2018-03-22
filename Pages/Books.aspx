@@ -200,7 +200,7 @@ $(document).ready(function(){
                     <asp:Button ID="Btn_Macbeth" runat="server" Text="Rent Now" Width="121px" />
                 </td>
                 <td class="auto-style2">
-                    <asp:Label ID="lblalert" runat="server" Text="Label" Visible="False"></asp:Label>
+                    <asp:Label ID="Lblalert" runat="server" Visible="False"></asp:Label>
                 </td>
                 <td>
                     <asp:Button ID="btn_test" runat="server" Text="Button" />
@@ -220,6 +220,7 @@ $(document).ready(function(){
                 <td class="auto-style2">
                     &nbsp;</td>
                 <td>&nbsp;
+                    <asp:Button ID="Button1" runat="server" Text="Button" />
                     </td>
             </tr>
             <tr>

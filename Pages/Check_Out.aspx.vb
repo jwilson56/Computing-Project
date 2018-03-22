@@ -1,6 +1,7 @@
-﻿
+﻿Imports System.Data.SqlClient
 Partial Class Pages_Check_Out
     Inherits System.Web.UI.Page
+
 
     '    Protected Sub Calendar1_SelectionChanged(sender As Object, e As EventArgs) Handles Calendar1.SelectionChanged
 
@@ -16,6 +17,13 @@ Partial Class Pages_Check_Out
         Dim itemPrice As String
         Dim total As Double
 
+        Dim now As DateTime = DateTime.Today
+
+
+
+
+
+
         bookID = Session("BookID")
         bookprice = Session("bookprice")
 
@@ -23,7 +31,7 @@ Partial Class Pages_Check_Out
 
         bookname = Session("bookname")
         bookprice = Session("bookprice")
-        booksubtotal = Session("booksubtotal")
+        booksubtotal = CDbl(Session("booksubtotal"))
 
         itemName = bookname
         itemPrice = bookprice
@@ -50,24 +58,33 @@ Partial Class Pages_Check_Out
             total = 0
         End If
 
+        Dim today As System.DateTime
+        Dim returnBook As System.DateTime
+
+        today = System.DateTime.Now
+        returnBook = today.AddDays(14)
+
 
     End Sub
-    Private Function ReturnDate(day As DayOfWeek) As DateTime
-        Dim now As DateTime = DateTime.Today
-        Dim today As Integer = CInt(now.DayOfWeek)
-        Dim find As Integer = CInt(day)
+    'Private Function ReturnDate(day As DayOfWeek) As DateTime
+    'Dim now As DateTime = DateTime.Today
+    'Dim today As Integer = CInt(now.DayOfWeek)
+    'Dim find As Integer = CInt(day)
 
-        Dim test As Integer = find - today
-        If test > 0 Then
-            Return now.AddDays(test)
-        Else
-            Return now.AddDays(7 - test)
+    'Dim test As Integer = find - today
+    'If test > 0 Then
+    '    Return now.AddDays(test)
+    'Else
+    '    Return now.AddDays(7 - test)
 
-        End If
+    'End If
+
+    'DateTime = Today = DateTime.Now
+    'DateTime after14days = Today.AddDays(3)
 
 
 
-    End Function
+    'End Function
 
     '    Public Sub CheckDate()
 
@@ -157,31 +174,45 @@ Partial Class Pages_Check_Out
         Dim fName As String
         Dim lName As String
         Dim email As String
-        Dim UpDate As String
+        'Dim UpDate As String
         Dim ReturnBy As String
-
+        'Dim order As System.DateTime
         Dim sqlCS As String
+        Dim returnBook As System.DateTime
+        Dim now As DateTime = DateTime.Today
+        Dim today As System.DateTime
 
-
+        today = System.DateTime.Now
+        returnBook = today.AddDays(14)
 
         fName = TxtFirstName.Text
         lName = TxtSecond.Text
         email = TxtEmail.Text
-        UpDate = TxtReturnDate.Text
-        ReturnBy = TxtReturnDate.Text
+
+        'ReturnBy = TxtReturnDate.Text
+        ReturnBy = returnBook
 
         sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
 
         Try
-            Using sqlConn As New Data.SqlClient.SqlConnection(sqlCS) 'may need to change back
+            'Using sqlConn As New Data.SqlClient.SqlConnection(sqlCS) 'may need to change back
+            Using sqlConn As New SqlConnection(sqlCS)
 
-                Dim sqlCmd As New Data.SqlClient.SqlCommand
+
+                'Dim sqlCmd As New Data.SqlClient.SqlCommand
+                Dim sqlCmd As New SqlCommand
+                sqlCmd.Connection = sqlConn
+                sqlCmd.CommandText = "InsertReservationInfo"
+                sqlCmd.CommandType = Data.CommandType.StoredProcedure
+
+
+
                 sqlCmd.Parameters.AddWithValue("@Email", email)
                 sqlCmd.Parameters.AddWithValue("@FirstName", fName)
                 sqlCmd.Parameters.AddWithValue("@LastName", lName)
-                sqlCmd.Parameters.AddWithValue("@PickUpDate", UpDate)
+                'sqlCmd.Parameters.AddWithValue("@PickUpDate", UpDate)
                 sqlCmd.Parameters.AddWithValue("@ReturnDate", ReturnBy)
-
+                sqlCmd.Parameters.AddWithValue("@OderPlaced", Today)
 
                 sqlConn.Open()
 
@@ -210,6 +241,30 @@ Partial Class Pages_Check_Out
     End Sub
 
     Protected Sub Calendar1_SelectionChanged(sender As Object, e As EventArgs) Handles Calendar1.SelectionChanged
+        TextBox1.Text = Calendar1.SelectedDate.ToShortDateString()
+        Calendar1.Visible = True
+    End Sub
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'DateTime = today = DateTime.Now
+        'DateTime after14days = today.AddDays(14)
+        'lblReturn.Text = after14days.tostring() back up code used if system.date time can tread the calender control
+
+        Dim today As System.DateTime
+        Dim returnBook As System.DateTime
+
+        today = System.DateTime.Now
+        returnBook = today.AddDays(14)
+
+
+
 
     End Sub
+
+    Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+
+
+
 End Class

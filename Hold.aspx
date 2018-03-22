@@ -37,6 +37,9 @@
         .auto-style1 {
             width: 271px;
         }
+        .auto-style2 {
+            width: 251px;
+        }
     </style>
   
 
@@ -144,7 +147,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="LblEmail" runat="server" Text="Email"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="TxtEmail" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
@@ -154,7 +157,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="LblFirstName" runat="server" Text="FirstName"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="TxtFirstName" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
@@ -164,7 +167,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="LblSecondName" runat="server" Text="Second Name"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="TxtSecond" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
@@ -174,7 +177,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="LblTime" runat="server" Text="Please select a time "></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:DropDownList ID="DropDownList1" runat="server">
                         <asp:ListItem>9:00 - 12:00  </asp:ListItem>
                         <asp:ListItem>12:00 - 15:00</asp:ListItem>
@@ -187,15 +190,17 @@
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Label ID="LblTestReturn" runat="server"></asp:Label>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -203,7 +208,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="Lbloutput" runat="server"></asp:Label>
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

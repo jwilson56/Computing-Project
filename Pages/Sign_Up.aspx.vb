@@ -348,9 +348,7 @@ Partial Class Sign_Up
     Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstName.TextChanged
 
     End Sub
-    Protected Sub btnLogIn_Click(sender As Object, e As EventArgs) Handles btnLogIn.Click
 
-    End Sub
     Protected Sub CreateUserWizard1_CreatedUser(sender As Object, e As EventArgs) Handles CreateUserWizard1.CreatedUser
         Dim sqlCS As String
         Dim FirstNameCust As String

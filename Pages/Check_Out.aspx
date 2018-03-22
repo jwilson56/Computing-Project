@@ -159,12 +159,18 @@ $(document).ready(function(){
     })
     </script>
 
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toString();
+    </script>
+
 </head>
 
 <body>
 
 
-    <%--<div id="paypal-button"></div>--%>  <%--<script>
+    <%--<div id="paypal-button"></div>--%><%--<script>
     paypal.Button.render({
       env: 'production', // Or 'sandbox',
 
@@ -314,21 +320,24 @@ $(document).ready(function(){
                     </asp:Calendar>
                 </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
                     Overall total:</td>
-                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox1" runat="server" Width="190px"></asp:TextBox>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
                     <asp:Label ID="lblitemsubtotal" runat="server"></asp:Label>
                 </td>
-                <td class="auto-style2">Please specifiy coleection time </td>
-                <td>&nbsp;</td>
+                <td class="auto-style2">Please specifiy collection date </td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="confirm date" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style3">
@@ -336,8 +345,7 @@ $(document).ready(function(){
                 <td class="auto-style4">
                     &nbsp;</td>
                 <td class="auto-style5">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="*Please enter information" ForeColor="Red" SetFocusOnError="True" Visible="False">Please enter information</asp:RequiredFieldValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -392,7 +400,7 @@ $(document).ready(function(){
                     <asp:Label ID="LblReturnDate" runat="server" Text="Return date"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TxtReturnDate" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblReturn" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -402,7 +410,8 @@ $(document).ready(function(){
                     <asp:Label ID="LblOutput" runat="server"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    &nbsp;</td>
+                    <asp:Button ID="BtnCheckOut" runat="server" Text="Place the hold" />
+                </td>
             </tr>
             <tr>
                 <td class="auto-style3">

@@ -200,7 +200,7 @@ Partial Class Pages_Books
 
 
         Else
-            lblalert.Text = "A run time error has taken place"
+            Lblalert.Text = "A run time error has taken place"
 
         End If
     End Sub
@@ -208,7 +208,10 @@ Partial Class Pages_Books
     Protected Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
 
     End Sub
-    Protected Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
+
+
 End Class
