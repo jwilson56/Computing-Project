@@ -308,16 +308,7 @@ $(document).ready(function(){
                 <td class="auto-style1">
                     &nbsp;</td>
                 <td class="auto-style2">
-                    <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px" Caption="Select a date" ToolTip="Please select a date">
-                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                        <NextPrevStyle VerticalAlign="Bottom" />
-                        <OtherMonthDayStyle ForeColor="#808080" />
-                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                        <SelectorStyle BackColor="#CCCCCC" />
-                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <WeekendDayStyle BackColor="#FFFFCC" />
-                    </asp:Calendar>
+                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
                 </td>
                 <td>
                     &nbsp;</td>
@@ -325,10 +316,12 @@ $(document).ready(function(){
             <tr>
                 <td class="auto-style1">
                     Overall total:</td>
-                <td class="auto-style2">
+                <td class="auto-style2"
                     <asp:TextBox ID="TextBox1" runat="server" Width="190px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:TextBox ID="Textdate" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">
@@ -336,7 +329,7 @@ $(document).ready(function(){
                 </td>
                 <td class="auto-style2">Please specifiy collection date </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="confirm date" />
+                    <asp:Button ID="Button1" runat="server" Text="Confirm Date" />
                 </td>
             </tr>
             <tr>
@@ -376,6 +369,15 @@ $(document).ready(function(){
                 </td>
                 <td class="auto-style17">
                     <asp:TextBox ID="TxtSecond" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style15">
+                    &nbsp;</td>
+                <td class="auto-style16">
+                    todays date</td>
+                <td class="auto-style17">
+                    <asp:Label ID="LblTodayDate" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>

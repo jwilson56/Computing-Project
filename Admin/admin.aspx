@@ -95,7 +95,9 @@
                     </asp:GridView>
                 </p>
                 <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                <p>
+                    <asp:Button ID="btnBookReturn" runat="server" Text="Button" />
+                </p>
                 <p>&nbsp;</p>
             </div>
         </div>

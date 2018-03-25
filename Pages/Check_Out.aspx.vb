@@ -17,7 +17,7 @@ Partial Class Pages_Check_Out
         Dim itemPrice As String
         Dim total As Double
 
-        Dim now As DateTime = DateTime.Today
+        'Dim now As Date = Date.Today
 
 
 
@@ -58,11 +58,6 @@ Partial Class Pages_Check_Out
             total = 0
         End If
 
-        Dim today As System.DateTime
-        Dim returnBook As System.DateTime
-
-        today = System.DateTime.Now
-        returnBook = today.AddDays(14)
 
 
     End Sub
@@ -179,11 +174,17 @@ Partial Class Pages_Check_Out
         'Dim order As System.DateTime
         Dim sqlCS As String
         Dim returnBook As System.DateTime
-        Dim now As DateTime = DateTime.Today
-        Dim today As System.DateTime
+        Dim pickupdate As Date
+        'Dim now As DateTime = DateTime.Today
+        'Dim today As System.DateTime
 
-        today = System.DateTime.Now
-        returnBook = today.AddDays(14)
+        Dim bookdate As Date
+        bookdate = Date.Now
+
+        Today = System.DateTime.Now
+        pickupdate = TextBox1.ToString
+
+        returnBook = pickupdate.AddDays(14)
 
         fName = TxtFirstName.Text
         lName = TxtSecond.Text
@@ -191,6 +192,8 @@ Partial Class Pages_Check_Out
 
         'ReturnBy = TxtReturnDate.Text
         ReturnBy = returnBook
+
+
 
         sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
 
@@ -249,20 +252,26 @@ Partial Class Pages_Check_Out
         'DateTime after14days = today.AddDays(14)
         'lblReturn.Text = after14days.tostring() back up code used if system.date time can tread the calender control
 
-        Dim today As System.DateTime
-        Dim returnBook As System.DateTime
+        'Dim today As System.DateTime
+        'Dim returnBook As System.DateTime
 
-        today = System.DateTime.Now
-        returnBook = today.AddDays(14)
+        'today = System.DateTime.Now
+        'returnBook = today.AddDays(14)
+        'Dim dt = Calendar1.SelectedDate
+        'Dim tm As DateTime = Calendar1
+
+        Dim bookdate As DateTime
+        bookdate = DateTime.Now
 
 
 
 
     End Sub
 
-    Protected Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 
-    End Sub
+
+
+
 
 
 
