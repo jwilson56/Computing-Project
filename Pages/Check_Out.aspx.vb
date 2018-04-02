@@ -260,13 +260,11 @@ Partial Class Pages_Check_Out
         'Dim dt = Calendar1.SelectedDate
         'Dim tm As DateTime = Calendar1
 
-        Dim bookdate As DateTime
-        bookdate = DateTime.Now
-
-
-
-
+        'Dim bookdate As DateTime
+        'bookdate = DateTime.Now
     End Sub
+
+
 
 
 

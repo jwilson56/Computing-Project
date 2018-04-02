@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data
+
 Partial Class Pages_PickUp
 
     Inherits System.Web.UI.Page
@@ -43,6 +45,8 @@ Partial Class Pages_PickUp
 
 
 
+
+
         LName = LblSecondName.Text
         FName = LblFirstName.Text
         email = LblEmail.Text
@@ -51,13 +55,22 @@ Partial Class Pages_PickUp
         sqlCS = ConfigurationManager.ConnectionStrings("Database").ConnectionString
 
         Try
-            Using sqlCS As New SqlCommand
+            Using sqlConn As New SqlConnection(sqlCS)
+
+                Dim sqlCmd As New SqlCommand
                 sqlCmd.Connection = sqlConn
                 sqlCmd.CommandText = "InsertDataIntoCollectionTable"
                 sqlCmd.CommandType = Data.CommandType.StoredProcedure
 
                 sqlCmd.Parameters.AddWithValue("@LastName", LName)
                 sqlCmd.Parameters.AddWithValue("@FirstName", FName)
+
+
+                sqlConn.Open()
+
+                sqlCmd.ExecuteNonQuery()
+
+                sqlConn.Close()
 
 
             End Using

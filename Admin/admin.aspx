@@ -94,11 +94,43 @@
                     <asp:GridView ID="GridView2" runat="server">
                     </asp:GridView>
                 </p>
-                <p>&nbsp;</p>
+                <p>
+                    <asp:DataList ID="DataList1" runat="server" DataKeyField="BookID" DataSourceID="SqlDataSource2">
+                        <ItemTemplate>
+                            BookName:
+                            <asp:Label ID="BookNameLabel" runat="server" Text='<%# Eval("BookName") %>' />
+                            <br />
+                            AuthorName:
+                            <asp:Label ID="AuthorNameLabel" runat="server" Text='<%# Eval("AuthorName") %>' />
+                            <br />
+                            Copies:
+                            <asp:Label ID="CopiesLabel" runat="server" Text='<%# Eval("Copies") %>' />
+                            <br />
+                            BookID:
+                            <asp:Label ID="BookIDLabel" runat="server" Text='<%# Eval("BookID") %>' />
+                            <br />
+<br />
+                        </ItemTemplate>
+                    </asp:DataList>
+                </p>
                 <p>
                     <asp:Button ID="btnBookReturn" runat="server" Text="Button" />
+                    <asp:Button ID="BtnUpdate" runat="server" Text="Update" />
+                    <asp:Label ID="lblcopies" runat="server"></asp:Label>
                 </p>
-                <p>&nbsp;</p>
+                <p>
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataKeyNames="BookID" DataSourceID="SqlDataSource2">
+                        <Columns>
+                            <asp:CommandField ShowEditButton="True" />
+                            <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                            <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
+                            <asp:BoundField DataField="Copies" HeaderText="Copies" SortExpression="Copies" />
+                            <asp:BoundField DataField="BookID" HeaderText="BookID" InsertVisible="False" ReadOnly="True" SortExpression="BookID" />
+                        </Columns>
+                    </asp:GridView>
+                    <asp:GridView ID="GridView4" runat="server" DataSourceID="ObjectDataSource1">
+                    </asp:GridView>
+                </p>
             </div>
         </div>
         <!-- /.row -->
@@ -109,21 +141,35 @@
 		<div class="footer-blurb">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4 footer-blurb-item">
-						<h3><span class="glyphicon glyphicon-fire"></span> Dynamically Procrastinate</h3>
-						<p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
-						<p><a class="btn btn-default" href="#">Procrastinate</a></p>
-					</div>
-					<div class="col-sm-4 footer-blurb-item">
-						<h3><span class="glyphicon glyphicon-cloud-upload"></span> Efficiently Unleash</h3>
-						<p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. </p>
-						<p><a class="btn btn-default" href="#">Unleash</a></p>
-					</div>
-					<div class="col-sm-4 footer-blurb-item">
-						<h3><span class="glyphicon glyphicon-leaf"></span> Completely Synergize</h3>
-						<p>Professionally cultivate one-to-one customer service with robust ideas. Completely synergize resource taxing relationships via premier niche markets. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
-						<p><a class="btn btn-default" href="#">Synergize</a></p>
-					</div>
+					<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Book] WHERE [BookID] = @BookID" InsertCommand="INSERT INTO [Book] ([BookName], [AuthorName], [Copies]) VALUES (@BookName, @AuthorName, @Copies)" SelectCommand="SELECT [BookName], [AuthorName], [Copies], [BookID] FROM [Book]" UpdateCommand="UPDATE [Book] SET [BookName] = @BookName, [AuthorName] = @AuthorName, [Copies] = @Copies WHERE [BookID] = @BookID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="BookID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="BookName" Type="String" />
+                            <asp:Parameter Name="AuthorName" Type="String" />
+                            <asp:Parameter Name="Copies" Type="Int16" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="BookName" Type="String" />
+                            <asp:Parameter Name="AuthorName" Type="String" />
+                            <asp:Parameter Name="Copies" Type="Int16" />
+                            <asp:Parameter Name="BookID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
+                    
+
+
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
+                    SelectMethod="Set" TypeName="DatabaseEntities2" DataObjectTypeName="System.Type" UpdateMethod="Set">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="+1" Name="entityType" Type="Object" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+
+				    <br />
+                    <br />
+                    <br />
 
 				</div>
 				<!-- /.row -->	
@@ -133,6 +179,7 @@
         <div class="small-print">
         	<div class="container">
         		<p><a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact</a></p>
+                <p>&nbsp;</p>
         		<p>Copyright &copy; Example.com 2015 </p>
         	</div>
         </div>

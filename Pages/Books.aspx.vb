@@ -46,18 +46,18 @@ Partial Class Pages_Books
     Sub addBookID()
 
 
-        Dim bookMacbethID As Integer
+        'Dim bookMacbethID As Integer
 
         '        'If DropDownListMacbeth.Text <> "" Then
         '        '    bookMacbethID = Session("BookID1")
         '        '    Session("ID") = bookMacbethID
 
-        If RadioButton1.Checked = True Then
-            bookMacbethID = Session("BookID1")
-            Session("BooksID") = 1
-        Else
-            bookMacbethID = 0
-        End If
+        'If RadioButton1.Checked = True Then
+        '    bookMacbethID = Session("BookID1")
+        '    Session("BooksID") = 1
+        'Else
+        '    bookMacbethID = 0
+        'End If
 
 
 
@@ -84,15 +84,15 @@ Partial Class Pages_Books
         '    strMacbeth = 0
         'End If
         'Dim radioButton1 As Boolean
-        If RadioButton1.Checked = True Then
-            strMacbeth = Session("macbethname")
-            bookName = strMacbeth.ToString
-        Else
-            strMacbeth = 0
-        End If
+        '    If RadioButton1.Checked = True Then
+        '        strMacbeth = Session("macbethname")
+        '        bookName = strMacbeth.ToString
+        '    Else
+        '        strMacbeth = 0
+        '    End If
 
-        Session("bookname") = bookName
-        Return True
+        '    Session("bookname") = bookName
+        '    Return True
     End Function
     '    Public Function addQBook() As Integer
     '        Dim quantityMacbeth As Integer
@@ -185,29 +185,27 @@ Partial Class Pages_Books
         '    addPriceBook()
 
         Session("qMacbeth") = qMacbeth
-        If RadioButton1.Checked = True Then
-            SumMacbeth = Macbeth
-            Session("sumMacbeth") = SumMacbeth
-            Session("MacbethName") = "Macbeth" & "<br>"
-            addBookID()
-            addNameBook()
-            addPriceBook()
+        'If RadioButton1.Checked = True Then
+        '    SumMacbeth = Macbeth
+        '    Session("sumMacbeth") = SumMacbeth
+        '    Session("MacbethName") = "Macbeth" & "<br>"
+        '    addBookID()
+        '    addNameBook()
+        '    addPriceBook()
 
 
 
-            BtnCheck_out.Visible = True
-            lblMessage.Visible = True
+        'BtnCheck_out.Visible = True
+        '    lblMessage.Visible = True
 
 
-        Else
-            Lblalert.Text = "A run time error has taken place"
+        'Else
+        '    Lblalert.Text = "A run time error has taken place"
 
-        End If
+        'End If
     End Sub
 
-    Protected Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
 
-    End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
